@@ -17,7 +17,8 @@
 		"commands": [
 		],
 		"capabilities" : {
-			"definitionProvider" : "true"
+			"definitionProvider" : "true",
+			"documentSymbolProvider": "true"
 		}
 	},
 	"scripts": {

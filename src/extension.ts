@@ -10,6 +10,12 @@ export function activate(context: vscode.ExtensionContext) {
         'groovy',
         new lib.DefinitionProvider()
     ));
+
+    //* document symbols
+    context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider(
+        'groovy',
+        new lib.DocumentSymbolProvider()
+    ));
 }
 
 export function deactivate() {}

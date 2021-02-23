@@ -53,3 +53,39 @@ export class DefinitionProvider implements vscode.DefinitionProvider {
     }
 
 }
+
+
+export class DocumentSymbolProvider implements vscode.DocumentSymbolProvider {
+    public provideDocumentSymbols(
+        document: vscode.TextDocument,
+        token: vscode.CancellationToken
+    ): vscode.ProviderResult<vscode.SymbolInformation[]> {
+        //* 1 === lf and 2 === crlf
+        const eol: string = 1 === document.eol ? '\n' : '\r\n';
+        const loc: string[] = document.getText().split(eol);
+
+        //* Note you can add more match patterns
+        const functionPattern: RegExp = /def\s+\w+\s*\(.*\)/;
+        const symbols: vscode.SymbolInformation[] = [];
+
+        loc.forEach((line, lineNumber) => {
+            //* check line for function symbol
+            if (functionPattern.test(line)) {
+                //* assumes `def name()` function format
+                const name: string = line.split('(')[0].split('def')[1].trim();
+
+                symbols.push(new vscode.SymbolInformation(
+                    name,
+                    vscode.SymbolKind.Function,
+                    '',
+                    new vscode.Location(
+                        document.uri,
+                        new vscode.Position(lineNumber, line.indexOf(name))
+                    )
+                ));
+            }
+        });
+
+        return symbols;
+    }
+}
