@@ -1,4 +1,8 @@
 {
+	"publisher": "MellowMarshmallow",
+	"repository": {
+		"url": "https://github.com/MellowMarshmallow/groovy-plugin"
+	},
 	"name": "groovy",
 	"displayName": "Groovy",
 	"description": "A simple helper for writing Groovy code",
