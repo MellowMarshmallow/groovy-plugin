@@ -5,8 +5,8 @@
 	},
 	"name": "groovy",
 	"displayName": "Groovy",
-	"description": "A simple helper for writing Groovy code",
-	"version": "0.0.1",
+	"description": "A plugin for the Groovy Apache programming language",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.53.0"
 	},
@@ -18,12 +18,12 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-		],
-		"capabilities" : {
-			"definitionProvider" : "true",
-			"documentSymbolProvider": "true"
-		}
+		"commands": []
+	},
+	"capabilities" : {
+		"documentSymbolProvider": true,
+		"definitionProvider": true,
+		"hoverProvider": true
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
